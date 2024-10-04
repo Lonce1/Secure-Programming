@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* awal navbar */
+
+.navbar{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background-color: black;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    z-index: 99;
+}
+
+.navbar .logo{
+    font-weight: bold;
+    color: aliceblue;
+    text-decoration: none;
+}
+
+.option a{
+    padding: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    margin-right: 5px;
+}
+
+.option a:hover{
+    border-bottom: 3px solid white;
+}
+
+.option .login-button{
+    width: 90px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+}
+
+/* akhir navbar */
+
+
+/* awal footer */
+
+footer{
+    position: fixed;
+    padding: 20px;
+    background-color: black;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+footer p{
+    color: white;
+}
+
+/* akhir footer */
