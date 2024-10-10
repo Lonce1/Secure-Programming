@@ -16,6 +16,7 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:5,1');
 Route::get('/login', [LoginController::class, 'viewLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

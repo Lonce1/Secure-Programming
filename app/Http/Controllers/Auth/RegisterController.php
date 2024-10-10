@@ -36,8 +36,8 @@ class RegisterController extends Controller
         // Log the user in
         Auth::login($user);
 
-        // Redirect to a post-registration page (e.g., dashboard)
-        return redirect()->intended('dashboard');
+        // Redirect to a post-registration page 
+        return redirect()->intended('home');
     }
 }
 
