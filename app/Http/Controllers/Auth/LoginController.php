@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function showLoginForm()
+    public function viewLoginForm()
     {
         return view('login');
     }
@@ -21,11 +21,11 @@ class LoginController extends Controller
         ]);
     
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->intended('dashboard');
+            return redirect()->intended('home');
         }
     
         return back()->withErrors([
-            'email' => 'Missing Email',
+            'email' => 'Invalid Email or Password',
         ]);
     }
     

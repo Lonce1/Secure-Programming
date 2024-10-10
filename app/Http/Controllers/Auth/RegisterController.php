@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;  // Assuming you're using the User model
+use App\Models\User;  
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +13,7 @@ class RegisterController extends Controller
     // Show the registration form
     public function showRegistrationForm()
     {
-        return view('register');  // Points to the Blade view your coworker created
+        return view('register');  
     }
 
     // Handle the registration submission
