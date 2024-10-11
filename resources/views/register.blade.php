@@ -20,7 +20,8 @@
     <div class="card">
         <div class="login">
             <h2>Register</h2>
-            <form action="#">
+            <form method="POST" action="{{ route('register') }">
+                @csrf
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
                     <input type="email" placeholder="Email" require>
