@@ -16,23 +16,32 @@
             <button class="login-button">login</button>
         </div>
     </div>
-
     <div class="card">
         <div class="login">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <h2>Login</h2>
-            <form action="#">
+            <form method="POST" action="/login">
+                @csrf
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" placeholder="Email" require>
+                    <input type="email" name="email" placeholder="Email">
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" placeholder="Password" require>
+                    <input type="password" name="password" placeholder="Password">
                 </div>
                 <div class="forgot">
                     <a href="#">Forgot Password?</a>
                 </div>
-                <button type="submit" class="btn">Login</button>
+                <button name="submit" type="submit" class="btn">Login</button>
                 <div class="login-register">
                     <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
                 </div>

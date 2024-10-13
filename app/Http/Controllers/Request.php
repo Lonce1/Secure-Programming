@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+class UserController extends Controller
+{
+
 public function store(Request $request)
 {
     $validatedData = $request->validate([
@@ -15,4 +18,6 @@ public function store(Request $request)
     User::create($validatedData);
 
     return redirect()->back()->with('success', 'User created successfully!');
+}
+
 }

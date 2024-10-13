@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+// use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,28 +10,30 @@ class LoginController extends Controller
 {
     public function viewLoginForm()
     {
-        return view('login');
+        return view("login");
     }
 
     public function login(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required'
+        ], [
+            'email.required' => 'Must insert email',
+            'password.required' => 'Must insert password',
         ]);
+
+        $infologin =[
+            'email' => $request->email,
+            'password' => $request->password
+        ];
     
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->intended('home');
+        if(Auth::attempt($infologin)) {
+            return view("home"); // sesuaikan
         }
-    
-        return back()->withErrors([
-            'email' => 'Invalid Email or Password',
-        ]);
-    }
-    
-    public function logout(Request $request)
-    {
-        Auth::logout();
-        return redirect('/login');
+        else
+        {
+            return view("register"); // sesuaikan
+        }
     }
 }

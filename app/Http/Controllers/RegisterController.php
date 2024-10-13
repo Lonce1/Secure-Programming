@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;  
@@ -24,6 +24,10 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:users,email',
             'username' => 'required|string|max:255|unique:users,username',
             'password' => 'required|string|min:8|confirmed',
+        ],[
+            'email.required' => 'Must insert email',
+            'username.required' => 'Must insert username',
+            'password.required' => 'Must insert password',
         ]);
 
         // Create a new user in the database
@@ -37,6 +41,6 @@ class RegisterController extends Controller
         Auth::login($user);
 
         // Redirect to a post-registration page (e.g., dashboard)
-        return redirect()->intended('dashboard');
+        return redirect()->intended('dashboard'); // sesuaikan
     }
 }
