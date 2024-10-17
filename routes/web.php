@@ -8,13 +8,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/forgotpassword', function () {
+    return view('forgotpassword');
+});
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/updateprofile', function () {
+    return view('updateprofile');
+});
+
 // Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:5,1');
 Route::get('/login', [LoginController::class, 'viewLoginForm']);
 Route::post('/login', [LoginController::class, 'login']);
 // Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Route::get('/register', [RegisterController::class, 'viewRegisterForm'])->name('register');
-// Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
 use App\Http\Controllers\UserController;
 Route::get('users', [UserController::class, 'index']);

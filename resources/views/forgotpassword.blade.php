@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
-    <link rel="stylesheet" href="css/register.css">
+    <title>Forgot Password Page</title>
+    <link rel="stylesheet" href="css/forgotpassword.css">
 </head>
 <body>
     <div class="navbar">
@@ -19,29 +19,18 @@
 
     <div class="card">
         <div class="login">
-            <h2>Register</h2>
+            <h2>Forgot Password</h2>
             <form method="POST" action="{{ route('register') }">
                 @csrf
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" placeholder="Email" require>
-                </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
-                    <input type="username" placeholder="Username" require>
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" placeholder="New Password" require>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" placeholder="Password" require>
+                    <input type="confirm-password" placeholder="Confirm New Password" require>
                 </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="confirm-password" placeholder="Confirm Password" require>
-                </div>
-                <button type="submit" class="btn">Register</button>
-                <div class="login-register">
-                    <p>Already register? <a href="#" class="register-link">Login</a></p>
-                </div>
+                <button type="submit" class="btn">Change</button>
             </form>
         </div>
     </div>
