@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login page</title>
-    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
     <div class="navbar">
@@ -16,31 +16,31 @@
             <button class="login-button">login</button>
         </div>
     </div>
-
     <div class="card">
         <div class="login">
-            <h2>Register</h2>
-            <form method="POST" action="{{ route('register') }">
+            <h2>Login</h2>
+            <form method="POST" action="{{ route("login.post") }}">
                 @csrf
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" placeholder="Email" require>
-                </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
-                    <input type="username" placeholder="Username" require>
-                </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" placeholder="Password" require>
+                    <input type="email" name="email" placeholder="Email">
+                    @if ($errors->has('email'))
+                        <div class="alert alert-danger">{{ $errors->first('email') }}</div>
+                    @endif
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="confirm-password" placeholder="Confirm Password" require>
+                    <input type="password" name="password" placeholder="Password">
+                    @if ($errors->has('password'))
+                        <div class="alert alert-danger">{{ $errors->first('password') }}</div>
+                    @endif
                 </div>
-                <button type="submit" class="btn">Register</button>
+                <div class="forgot">
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button name="submit" type="submit" class="btn">Login</button>
                 <div class="login-register">
-                    <p>Already register? <a href="#" class="register-link">Login</a></p>
+                    <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
                 </div>
             </form>
         </div>

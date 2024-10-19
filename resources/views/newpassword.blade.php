@@ -20,15 +20,21 @@
     <div class="card">
         <div class="login">
             <h2>Forgot Password</h2>
-            <form method="POST" action="{{ route('register') }">
+            <p>Enter your email, and we'll send you instructions to reset your password. Follow the link in the email to create a new, secure password and regain access to your account.</p>
+            <form method="POST" action="{{ route('reset.password.post') }}">
                 @csrf
+                <input type="text" name="token" hidden value="{{$token}}">
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" placeholder="New Password" require>
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" name="email" placeholder="Email">
                 </div>
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="confirm-password" placeholder="Confirm New Password" require>
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="password" name="passwordconfirmation" placeholder="Confirm Password">
                 </div>
                 <button type="submit" class="btn">Change</button>
             </form>

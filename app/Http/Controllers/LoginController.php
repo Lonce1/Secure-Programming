@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     public function viewLoginForm()
     {
-        return view("login");
+        return view("auth.login");
     }
 
     public function login(Request $request)
@@ -22,18 +22,10 @@ class LoginController extends Controller
             'email.required' => 'Must insert email',
             'password.required' => 'Must insert password',
         ]);
-
-        $infologin =[
-            'email' => $request->email,
-            'password' => $request->password
-        ];
-    
-        if(Auth::attempt($infologin)) {
-            return view("home"); // sesuaikan
+        $credential = $request->only("email", "password");
+        if(Auth::attempt($credential)){
+            return redirect()-> intended(route("home"));
         }
-        else
-        {
-            return view("register"); // sesuaikan
-        }
+        return redirect(route("login"))->with("error", "Login failed!");
     }
 }

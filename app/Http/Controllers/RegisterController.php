@@ -2,45 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\User;  
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
     // Show the registration form
     public function showRegistrationForm()
     {
-        return view('register');  
+        return view('auth.register');  
     }
 
     // Handle the registration submission
     public function register(Request $request)
     {
-        // Validate the form data
         $request->validate([
             'email' => 'required|email|unique:users,email',
             'username' => 'required|string|max:255|unique:users,username',
-            'password' => 'required|string|min:8|confirmed',
-        ],[
-            'email.required' => 'Must insert email',
-            'username.required' => 'Must insert username',
-            'password.required' => 'Must insert password',
+            'password' => 'required|string|min:6',
         ]);
 
-        // Create a new user in the database
-        $user = User::create([
-            'email' => $request->email,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-        ]);
-
-        // Log the user in
-        Auth::login($user);
-
-        // Redirect to a post-registration page (e.g., dashboard)
-        return redirect()->intended('dashboard'); // sesuaikan
+        $user = new User();
+        $user->email = $request->email;
+        $user->name = $request->username;
+        $user->password = Hash::make($request->password);
+        if ($user->save()){
+            return redirect(route("login"))->with('success', 'Registration successful!');
+        }
+        return redirect("register")->with('error', 'Failed Registration!');;
     }
 }
