@@ -36,7 +36,7 @@
                     @endif
                 </div>
                 <div class="forgot">
-                    <a href="#">Forgot Password?</a>
+                    <a href="forgotpassword">Forgot Password?</a>
                 </div>
                 <button name="submit" type="submit" class="btn">Login</button>
                 <div class="login-register">

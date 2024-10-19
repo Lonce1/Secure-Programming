@@ -34,7 +34,7 @@
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="password" name="passwordconfirmation" placeholder="Confirm Password">
+                    <input type="password" name="password_confirmation" placeholder="Confirm Password">
                 </div>
                 <button type="submit" class="btn">Change</button>
             </form>

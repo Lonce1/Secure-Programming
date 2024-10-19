@@ -45,7 +45,7 @@ class ForgotpasswordController extends Controller
         $request->validate([
             "email" => "required|email|exists:users",
             "password" => "required|string|min:6|confirmed",
-            "passwordconfirmation" => "required"
+            "password_confirmation" => "required"
         ]);
 
         $updatePassword = DB::table('password_reset_tokens')->where([
@@ -61,6 +61,6 @@ class ForgotpasswordController extends Controller
 
         DB::table("password_reset_tokens")->where(["email" => $request->email])->delete();
 
-        return redirect()->to(route("auth.login"))->with("success", "password reset success");
+        return redirect()->to(route("login"))->with("success", "password reset success");
     }
 }
