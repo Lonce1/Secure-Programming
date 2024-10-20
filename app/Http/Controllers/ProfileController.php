@@ -9,7 +9,7 @@ class ProfileController extends Controller
 {
     public function edit()
     {
-        return view('profile.updateprofile', ['user' => Auth::user()]);
+        return view('updateprofile', ['user' => Auth::user()]);
     }
 
     public function update(Request $request)
