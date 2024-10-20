@@ -181,4 +181,16 @@ footer p{
     text-decoration: none;
 }
 
+.alert {
+    margin-bottom: 20px; /* Space below the alert */
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #f5c6cb; /* Border color */
+}
+
+.alert ul{
+    list-style: none;
+}
 /* akhir login box */

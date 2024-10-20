@@ -10,8 +10,8 @@
     <div class="navbar">
         <h2 class="logo">Cyber Consultant</h2>
         <div class="option">
-            <a href="">Home</a>
-            <a href="">Service</a>
+            <a href="home">Home</a>
+            <a href="service">Service</a>
             <a href="">Blog</a>
             <button class="login-button">login</button>
         </div>
@@ -20,7 +20,7 @@
     <div class="card">
         <div class="login">
             <h2>Register</h2>
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }">
                 @csrf
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
