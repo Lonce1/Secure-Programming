@@ -24,8 +24,21 @@ class LoginController extends Controller
         ]);
         $credential = $request->only("email", "password");
         if(Auth::attempt($credential)){
+            $user = Auth::user();
+            if ($user->role === 'admin'){
+                return redirect()-> intended(route("admin"));
+            }
             return redirect()-> intended(route("home"));
         }
         return redirect(route("login"))->with("error", "Login failed!");
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login')->with('status', 'Logged out successfully');
     }
 }

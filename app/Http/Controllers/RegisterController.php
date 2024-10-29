@@ -26,10 +26,11 @@ class RegisterController extends Controller
 
         $user = new User();
         $user->email = $request->email;
-        $user->name = $request->username;
+        $user->username = $request->username;
         $user->password = Hash::make($request->password);
+        $user->role = 'user';
         if ($user->save()){
-            return redirect(route("login"))->with('success', 'Registration successful!');
+            return redirect(route("auth.login"))->with('success', 'Registration successful!');
         }
         return redirect("register")->with('error', 'Failed Registration!');;
     }

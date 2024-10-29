@@ -9,15 +9,14 @@
 <body>
     <div class="navbar">
         <h2 class="logo">Cyber Consultant</h2>
-        <div class="option">
-            <a href="home">Home</a>
-            <a href="service">Service</a>
-            <a href="">Blog</a>
-            <button class="login-button">login</button>
-        </div>
     </div>
     <div class="card">
         <div class="login">
+            @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+            @endif
             <h2>Login</h2>
             <form method="POST" action="{{ route("login.post") }}">
                 @csrf

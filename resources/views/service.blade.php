@@ -13,7 +13,10 @@
             <a href="home">Home</a>
             <a href="service">Service</a>
             <a href="">Blog</a>
-            <button class="login-button">login</button>
+            <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit">Logout</button>
+            </form>
         </div>
     </div>
     <div class="header">

@@ -10,9 +10,6 @@
     <div class="navbar">
         <h2 class="logo">Cyber Consultant</h2>
         <div class="option">
-            <a href="home">Home</a>
-            <a href="service">Service</a>
-            <a href="">Blog</a>
             <button class="login-button">login</button>
         </div>
     </div>
