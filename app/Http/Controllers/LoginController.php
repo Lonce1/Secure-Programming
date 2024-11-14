@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class LoginController extends Controller
 {
@@ -22,14 +23,22 @@ class LoginController extends Controller
             'email.required' => 'Must insert email',
             'password.required' => 'Must insert password',
         ]);
-        $credential = $request->only("email", "password");
-        if(Auth::attempt($credential)){
-            $user = Auth::user();
-            if ($user->role === 'admin'){
-                return redirect()-> intended(route("admin"));
-            }
-            return redirect()-> intended(route("home"));
+        $credentials = $request->only("email", "password");
+
+        if (Auth::guard('web')->attempt($credentials)) {
+            $user = Auth::guard('web')->user();
+            if ($user->role === 'user') {
+                return redirect()->intended(route("home"));
+            } 
         }
+
+        if (Auth::guard('admin')->attempt($credentials)) {
+            $user = Auth::guard('admin')->user();
+            if ($user->role === 'admin') {
+                return redirect()->intended(route("admin.dashboard"));
+            }
+        }
+
         return redirect(route("login"))->with("error", "Login failed!");
     }
 

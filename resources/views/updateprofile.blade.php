@@ -12,8 +12,11 @@
         <div class="option">
             <a href="home">Home</a>
             <a href="service">Service</a>
-            <a href="">Blog</a>
-            <button class="login-button">login</button>
+            <a href="updateprofile">Profile</a>
+            <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit">Logout</button>
+            </form>
         </div>
     </div>
 
@@ -22,30 +25,26 @@
         <div class="current-info">
             <h2>Current Profile Information</h2>
             <img src="img/default.jpg" alt="Profile Image" class="profile-pic">
-            <p><strong>Name:</strong> John Doe</p>
-            <p><strong>Email:</strong> john.doe@example.com</p>
-            <p><strong>Phone:</strong> +123 456 789</p>
+            <p><strong>Name:</strong> {{ $user->username }}</p>
+            <p><strong>Email:</strong> {{ $user->email }}</p>
         </div>
 
         <!-- Right box: Edit profile form -->
         <div class="edit-profile-container">
             <h2>Edit Profile</h2>
-            <form action="/update-profile" method="post" enctype="multipart/form-data">
+            <form action="{{ route('update-profile') }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <!-- Profile Image -->
                 <label for="profile-image">Profile Image:</label>
-                <input type="file" id="profile-image" name="profile-image" accept="image/*"><br>
+                <input type="file" id="profileimage" name="profileimage" accept="image/*"><br>
 
                 <!-- Name -->
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name"><br>
+                <input type="text" id="username" name="username" value="{{ $user->username }}" placeholder="Chnage your username"><br>
 
                 <!-- Email -->
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email"><br>
-
-                <!-- Phone Number -->
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"><br>
+                <input type="email" id="email" name="email" value="{{ $user->email }}" placeholder="Change your email"><br>
 
                 <!-- Submit Button -->
                 <button type="submit">Save Changes</button>

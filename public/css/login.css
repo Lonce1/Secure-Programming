@@ -192,7 +192,7 @@ footer p{
 .alert-success{
     margin-bottom: 20px; /* Space below the alert */
     background-color: green; /* Light red background */
-    color: green; /* Dark red text */
+    color: white; /* Dark red text */
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #f5c6cb; /* Border color */   

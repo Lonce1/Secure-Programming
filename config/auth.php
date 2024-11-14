@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'admin' => [
+            'driver' => 'session',  // Using session-based authentication
+            'provider' => 'admins', // Custom provider for admins
+        ],
     ],
 
     /*
@@ -59,11 +64,17 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
-        ],
+'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
+    ],
+
+    'admins' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class, // You can use a separate model if you have one for admins
+    ],
+
 
         // 'users' => [
         //     'driver' => 'database',
