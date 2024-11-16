@@ -10,7 +10,7 @@ use App\Http\Controllers\UpdateController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::get('/login', [LoginController::class, 'viewLoginForm'])->name('login');
