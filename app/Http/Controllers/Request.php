@@ -11,7 +11,7 @@ public function store(Request $request)
 {
     $validatedData = $request->validate([
         'name' => 'required|string|max:255',
-        'password' => 'required|string|min:8',
+        'password' => 'required|string|min:6|regex:/[A-Z]/|regex:/[0-9]/|regex:/[@$!%*?&#]/',
     ]);
 
     // Store the validated data
